@@ -2,7 +2,7 @@ let num1 = parseFloat(prompt("ingrese el primer número"));
 let num2 = parseFloat(prompt("ingrese el segundo número"));
 let num3 = parseFloat(prompt("ingrese el tercer número"));
 
-alert("el primer numero es " + num1 + " el segundo numero " + num2 + " El tercer numero " + num3)
+
 
 console.log("el primer número es ", num1);
 console.log("el segundo número es ", num2);
