@@ -26,6 +26,15 @@ function listarTarea() {
 }
 
 function editarTarea() {
+    let editar = prompt('Ingrese el nombre de la tarea que desea editar');
+    if (lista.includes(editar)) {
+        let reemplazar = prompt('Ingrese el nombre de la tarea que reemplazará a la anterior');
+        if(task.includes(reemplazar)) {
+            let buscarTarea = lista.indexOf(editar);
+            lista[buscarTarea] = reemplazar;
+            alert('La tarea ' + editar + ' fue reemplazada por la tarea ' + reemplazar);
+        }
+    }
 
 }
 
