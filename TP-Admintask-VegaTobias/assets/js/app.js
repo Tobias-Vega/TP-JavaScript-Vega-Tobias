@@ -26,19 +26,36 @@ function listarTarea() {
 }
 
 function editarTarea() {
-    let editar = prompt('Ingrese el nombre de la tarea que desea editar');
+    if(lista.length === 0) {
+        alert('No hay tareas para editar')
+    } else {
+        let editar = prompt('Ingrese el nombre de la tarea que desea editar');
     if (lista.includes(editar)) {
         let reemplazar = prompt('Ingrese el nombre de la tarea que reemplazará a la anterior');
         if(task.includes(reemplazar)) {
             let buscarTarea = lista.indexOf(editar);
             lista[buscarTarea] = reemplazar;
             alert('La tarea ' + editar + ' fue reemplazada por la tarea ' + reemplazar);
-        }
+        } else {
+            alert('La tarea que quiere reemplazar no existe');
+        }  
+    } else {
+        alert('El nombre de la tarea para editarla no se encuentra en la lista. Asegurese de revisar su lista de tareas');
     }
+    }
+    
 
 }
 
 function eliminarTarea() {
+    let eliminar = prompt('Ingrese el nombre de la tarea que desea eliminar');
+    if(lista.includes(eliminar)) {
+        let buscarTarea = lista.indexOf(eliminar);
+        lista.splice(buscarTarea,1);
+        alert('La tarea ' + eliminar + ' fue eliminada');
+    } else {
+        alert('El nombre de la tarea que quiere eliminar no se encuentra en la lista. Asegúrese de revisar su lista de tareas');
+    }
 
 }
 
