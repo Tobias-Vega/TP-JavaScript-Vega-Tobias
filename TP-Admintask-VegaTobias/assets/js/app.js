@@ -1,39 +1,64 @@
-let task = ["Matematica", "Programacion", "Ingles", "Base de atos"]
+let task = ['Matematica', 'Programacion', 'Ingles', 'Base de Datos'];
+let lista = [];
 
 
 
-for (let i = 0; i < task.length; i++) {
-    console.log(task[i])
-}
 let elecciontarea;
-let agregartarea = 1;
+let agregar;
+let numeroTarea = 1
+
+function agregarTarea() {
+    agregar = prompt('¿Qué tarea desea agregar?');
+    if(task.includes(agregar)) {
+        alert('Se agrego la tarea: ' + agregar);
+        lista.push(agregar);
+    } else {
+        alert('La tarea no existe');
+    }
+}
+
+function listarTarea() {
+    for (let i = 0; i < lista.length; i++) {
+        return numeroTarea, '-', lista;
+        numeroTarea = numeroTarea + 1;
+    }
+}
+
+function editarTarea() {
+
+}
+
+function eliminarTarea() {
+
+}
 
 while(elecciontarea != 0) {
-    elecciontarea = prompt("Bienvenido al adminsitrador de tareas. Eliga la funcionalidad que quiere realizar: \n1-AGREGAR TAREA" + "\n2-LISTAR TAREAS" + "\n3-EDITAR TAREA" + "\n4-ELIMINAR TAREA" + "\n0-SALIR")
+    elecciontarea = parseInt(prompt('Bienvenido al adminsitrador de tareas. Eliga la funcionalidad que quiere realizar: \n1-AGREGAR TAREA' + '\n2-LISTAR TAREAS' + '\n3-EDITAR TAREA' + '\n4-ELIMINAR TAREA' + '\n0-SALIR'));
 
-    switch (true) {
+    switch (elecciontarea) {
     case 1:
-        console.log("1")
+        agregarTarea();
         
         break;
     case 2:
-        console.log("2")
+        listarTarea();
+        alert(listarTarea());
         break;
     
     case 3:
-        console.log("3")
+        document.write("Editar tarea");
         break;
 
     case 4:
-        console.log("4")
+        document.write("Eliminar tarea");
         break;
 
     case 0:
-        console.log("Hasta luego")
+    alert('Hasta luego');
         break;
 
     default:
-        console.log("La funcionalidad ingresada no existe");
+        alert("La funcionalidad ingresada no existe");
         break;
 }
     
