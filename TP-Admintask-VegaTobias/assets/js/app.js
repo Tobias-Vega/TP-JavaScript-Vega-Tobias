@@ -1,16 +1,11 @@
-let task = ['Matematica', 'Programacion', 'Ingles', 'Base de Datos'];
+let task = ['Matematica', 'Programacion','Ingles', 'Base de Datos'];
 let lista = [];
-
-
-
-let elecciontarea;
-let agregar;
-let numeroTarea = 1
+let eleccionTarea;
 
 function agregarTarea() {
-    agregar = prompt('¿Qué tarea desea agregar?');
-    if(task.includes(agregar)) {
-        alert('Se agrego la tarea: ' + agregar);
+    let agregar = prompt('¿Qué tarea desea agregar?');
+    if (task.includes(agregar)) {
+        alert('Se agregó la tarea: ' + agregar);
         lista.push(agregar);
     } else {
         alert('La tarea no existe');
@@ -18,10 +13,16 @@ function agregarTarea() {
 }
 
 function listarTarea() {
-    for (let i = 0; i < lista.length; i++) {
-        return numeroTarea, '-', lista;
-        numeroTarea = numeroTarea + 1;
+    if (lista.length === 0) {
+        return 'No hay tareas en la lista';
+    } else {
+        let listaTareas = '';
+        for (let i = 0; i < lista.length; i++) {
+            listaTareas += `${i+1}. ${lista[i]}\n`;
+        }
+        return listaTareas;
     }
+
 }
 
 function editarTarea() {
@@ -32,35 +33,32 @@ function eliminarTarea() {
 
 }
 
-while(elecciontarea != 0) {
-    elecciontarea = parseInt(prompt('Bienvenido al adminsitrador de tareas. Eliga la funcionalidad que quiere realizar: \n1-AGREGAR TAREA' + '\n2-LISTAR TAREAS' + '\n3-EDITAR TAREA' + '\n4-ELIMINAR TAREA' + '\n0-SALIR'));
-
-    switch (elecciontarea) {
-    case 1:
-        agregarTarea();
-        
-        break;
-    case 2:
-        listarTarea();
-        alert(listarTarea());
-        break;
-    
-    case 3:
-        document.write("Editar tarea");
-        break;
-
-    case 4:
-        document.write("Eliminar tarea");
-        break;
-
-    case 0:
-    alert('Hasta luego');
-        break;
-
-    default:
-        alert("La funcionalidad ingresada no existe");
-        break;
+while (eleccionTarea !== 0) {
+    eleccionTarea = parseInt(prompt('Bienvenido al Administrador de tareas. Elija la funcionalidad que desea realizar\n' +
+    '1-AGREGAR TAREA\n' +
+    '2-LISTAR TAREA\n' +
+    '3-EDITAR TAREA\n' +
+    '4-ELIMINAR TAREA\n' +
+    '0-SALIR'
+    ));
+    switch(eleccionTarea) {
+        case 1:
+            agregarTarea()
+            break;
+        case 2:
+            alert('Lista de tareas:\n' + listarTarea());
+            break;
+        case 3:
+            editarTarea();
+            break;
+        case 4:
+            eliminarTarea();
+            break;
+        case 0:
+            alert('Hasta luego');
+            break;
+        default:
+            alert('La funcionalidad ingresada no existe');
+            break;
+    }
 }
-    
-}
-
