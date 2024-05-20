@@ -1,18 +1,13 @@
-let task = ['Matematica', 'Programacion','Ingles', 'Arquitectura'];
 let lista = [];
 let eleccionTarea;
-const regex = /^\S+$/;
+const regex = /^\S(.*\S)?$/;
 
 function agregarTarea() {
     let agregar = prompt('¿Qué tarea desea agregar?');
     if (regex.test(agregar)) {
-        if (task.includes(agregar)) {
         alert('Se agregó la tarea: ' + agregar);
         lista.push(agregar);
     } else {
-        alert('La tarea no existe');
-    }
-    }  else {
         alert('Error. Las tareas no deben ser vacias ni contener espacio al principio o al final')
     }
 }
@@ -39,22 +34,18 @@ function editarTarea() {
             if (lista.includes(editar)) {
                 let reemplazar = prompt('Ingrese el nombre de la tarea que reemplazará a la anterior');
                 if (regex.test(reemplazar)) {
-                    if(task.includes(reemplazar)) {
                         let buscarTarea = lista.indexOf(editar);
                         lista[buscarTarea] = reemplazar;
                         alert('La tarea ' + editar + ' fue reemplazada por la tarea ' + reemplazar);
                     } else {
-                        alert('La tarea que quiere reemplazar no existe');
-                    }
-                } else {
                     alert('Error. Las tareas no deben ser vacias ni contener espacio al principio o al final');
                 }
-            } else {
+                } else {
                 alert('El nombre de la tarea para editarla no se encuentra en la lista. Asegurese de revisar su lista de tareas');
-            }
-        } else {
+            } 
+            }else {
             alert('Error. Las tareas no deben ser vacias ni contener espacio al principio o al final');
-        }
+        } 
     }
 }
 
