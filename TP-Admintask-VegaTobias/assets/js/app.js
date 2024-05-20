@@ -1,14 +1,19 @@
-let task = ['Matematica', 'Programacion','Ingles', 'Base de Datos'];
+let task = ['Matematica', 'Programacion','Ingles', 'Arquitectura'];
 let lista = [];
 let eleccionTarea;
+const regex = /^\S+$/;
 
 function agregarTarea() {
     let agregar = prompt('¿Qué tarea desea agregar?');
-    if (task.includes(agregar)) {
+    if (regex.test(agregar)) {
+        if (task.includes(agregar)) {
         alert('Se agregó la tarea: ' + agregar);
         lista.push(agregar);
     } else {
         alert('La tarea no existe');
+    }
+    }  else {
+        alert('Error. Las tareas no deben ser vacias ni contener espacio al principio o al final')
     }
 }
 
@@ -27,28 +32,37 @@ function listarTarea() {
 
 function editarTarea() {
     if(lista.length === 0) {
-        alert('No hay tareas para editar')
+        alert('No hay tareas para editar');
     } else {
         let editar = prompt('Ingrese el nombre de la tarea que desea editar');
-    if (lista.includes(editar)) {
-        let reemplazar = prompt('Ingrese el nombre de la tarea que reemplazará a la anterior');
-        if(task.includes(reemplazar)) {
-            let buscarTarea = lista.indexOf(editar);
-            lista[buscarTarea] = reemplazar;
-            alert('La tarea ' + editar + ' fue reemplazada por la tarea ' + reemplazar);
+        if(regex.test(editar)) {
+            if (lista.includes(editar)) {
+                let reemplazar = prompt('Ingrese el nombre de la tarea que reemplazará a la anterior');
+                if (regex.test(reemplazar)) {
+                    if(task.includes(reemplazar)) {
+                        let buscarTarea = lista.indexOf(editar);
+                        lista[buscarTarea] = reemplazar;
+                        alert('La tarea ' + editar + ' fue reemplazada por la tarea ' + reemplazar);
+                    } else {
+                        alert('La tarea que quiere reemplazar no existe');
+                    }
+                } else {
+                    alert('Error. Las tareas no deben ser vacias ni contener espacio al principio o al final');
+                }
+            } else {
+                alert('El nombre de la tarea para editarla no se encuentra en la lista. Asegurese de revisar su lista de tareas');
+            }
         } else {
-            alert('La tarea que quiere reemplazar no existe');
-        }  
-    } else {
-        alert('El nombre de la tarea para editarla no se encuentra en la lista. Asegurese de revisar su lista de tareas');
+            alert('Error. Las tareas no deben ser vacias ni contener espacio al principio o al final');
+        }
     }
-    }
-    
-
 }
 
 function eliminarTarea() {
-    let eliminar = prompt('Ingrese el nombre de la tarea que desea eliminar');
+    if(lista.length === 0) {
+        alert('No hay tareas para eliminar');
+    } else {
+        let eliminar = prompt('Ingrese el nombre de la tarea que desea eliminar');
     if(lista.includes(eliminar)) {
         let buscarTarea = lista.indexOf(eliminar);
         lista.splice(buscarTarea,1);
@@ -56,7 +70,7 @@ function eliminarTarea() {
     } else {
         alert('El nombre de la tarea que quiere eliminar no se encuentra en la lista. Asegúrese de revisar su lista de tareas');
     }
-
+    }
 }
 
 while (eleccionTarea !== 0) {
